@@ -76,6 +76,15 @@ const Form = () => {
       </button>
     </form>
     {error && <h1 className='option-err'>{error}</h1>}
+    {fetchedError && checkForError(statusCode)}
+    {!fetchedError && 
+    !error && lang 
+    && repoName && repoApiData.length &&
+    <RepoCard 
+      lang={lang} 
+      repoName={repoName} 
+      repoApiData={repoApiData}
+    />}
     </>
   )
 }
