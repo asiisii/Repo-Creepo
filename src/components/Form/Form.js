@@ -1,11 +1,30 @@
 import React, { useState } from 'react'
-
+import languages from './languagesList'
 
 const Form = () => {
   const [repoName, setRepoName] = useState('')
 
   const handleChange = (e) => {
     setRepoName([e.target.name] = e.target.value)
+  }
+  
+  const generateOptions = () => {
+    return (
+      <select>
+        <option value='' disabled>Select language</option>
+        {languages.map((language, i) => {
+          return (
+            <option 
+              key={i}
+              value={language.value}>
+              {language.label}
+            </option>
+          )
+        })}
+      </select>
+        
+
+    )
   }
 
   return (
@@ -18,6 +37,7 @@ const Form = () => {
         value={repoName}
         onChange={(e) => handleChange(e)}
       />
+      {generateOptions()}
     </div>
   )
 }
