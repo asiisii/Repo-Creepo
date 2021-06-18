@@ -1,4 +1,5 @@
 import React from 'react'
+import Form from '../Form/Form'
 
 const Search = () => {
   return (
@@ -6,6 +7,7 @@ const Search = () => {
       <header>
         <h1>Repo Creep🔍</h1>
       </header>
+      <Form />
     </div>
   )
 }
