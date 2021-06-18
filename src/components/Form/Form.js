@@ -11,7 +11,8 @@ const Form = () => {
   const generateOptions = () => {
     return (
       <select>
-        <option value='' disabled>Select language</option>
+        <option value='' disabled selected>Select language</option>
+        <option value='all' >All</option>
         {languages.map((language, i) => {
           return (
             <option 
