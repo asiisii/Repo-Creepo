@@ -15,6 +15,7 @@ const cleanUpApiData = repos => {
     }
   })
   console.log(details)
+  return details
 }
 
 export default cleanUpApiData
