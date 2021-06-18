@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import languages from './languagesList'
 import RepoCard from '../RepoCard/RepoCard'
 import { fetchRepoData, checkForError } from '../../apiData/apiCalls'
+import cleanUpApiData from '../../apiData/cleanUpApiData'
 
 const Form = () => {
   const [repoName, setRepoName] = useState('')
@@ -9,6 +10,7 @@ const Form = () => {
   const [statusCode, setStatusCode] = useState(200)
   const [fetchedError, setFetchedError] = useState(false)
   const [repoApiData, setRepoApidata] = useState([])
+  const [error, setError] = useState('')
 
   const handleRepoNameChange = e => setRepoName(e.target.value)
 
@@ -17,6 +19,7 @@ const Form = () => {
   const handleSubmit = e => {
     console.log(`submit`);
     e.preventDefault()
+    setError('')
     console.log(repoName, lang);
     if (repoName && lang) {
       setFetchedError(false)
@@ -26,10 +29,11 @@ const Form = () => {
           return response.json()
         })
         .then(data => {
-          console.log(data.items)
+          // console.log(data.items)
+          cleanUpApiData(data.items)
         })
         .catch(() => setFetchedError(true))
-    }
+    } else setError(`Please select a language`)
     // && <RepoCard lang={lang} repoName={repoName} />
   }
 
@@ -52,8 +56,10 @@ const Form = () => {
   }
 
   return (
+    <>
     <form className='div' onSubmit={(e) => handleSubmit(e)} >
       <input 
+        required
         type='text'
         name='repoName'
         placeholder='Enter a repository name...'
@@ -62,14 +68,15 @@ const Form = () => {
         onChange={(e) => handleRepoNameChange(e)}
       />
       {generateOptions()}
-      <input 
+      <button 
         className='search-btn' 
         type='submit' 
         value="Submit" 
-        
-      />
+       >Search Repo 
+      </button>
     </form>
-
+    {error && <h1 className='option-err'>{error}</h1>}
+    </>
   )
 }
 
