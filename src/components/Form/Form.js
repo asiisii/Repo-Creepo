@@ -30,7 +30,7 @@ const Form = () => {
         })
         .then(data => {
           // console.log(data.items)
-          cleanUpApiData(data.items)
+          setRepoApidata(cleanUpApiData(data.items))
         })
         .catch(() => setFetchedError(true))
     } else setError(`Please select a language`)
