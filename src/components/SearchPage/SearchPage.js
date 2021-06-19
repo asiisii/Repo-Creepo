@@ -1,7 +1,7 @@
 import React from 'react'
 import Form from '../Form/Form'
 
-const Search = () => {
+const SearchPage = () => {
   return (
     <div className='Search'>
       <header>
@@ -12,4 +12,4 @@ const Search = () => {
   )
 }
 
-export default Search
+export default SearchPage

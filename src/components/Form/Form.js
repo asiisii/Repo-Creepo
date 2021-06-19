@@ -1,16 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import languages from './languagesList'
 import RepoCard from '../RepoCard/RepoCard'
 import { fetchRepoData, checkForError } from '../../apiData/apiCalls'
+import storeRepoDetails from '../../redux/action'
 import cleanUpApiData from '../../apiData/cleanUpApiData'
-
+import { useSelector, useDispatch } from 'react-redux'
 const Form = () => {
   const [repoName, setRepoName] = useState('')
   const [lang, setLang] = useState('')
   const [statusCode, setStatusCode] = useState(200)
   const [fetchedError, setFetchedError] = useState(false)
-  const [repoApiData, setRepoApidata] = useState([])
   const [error, setError] = useState('')
+
+  const dispatch = useDispatch()
+  const repoData = useSelector(store => store.repoData)
 
   const handleRepoNameChange = e => setRepoName(e.target.value)
 
@@ -29,13 +32,17 @@ const Form = () => {
           return response.json()
         })
         .then(data => {
-          // console.log(data.items)
-          setRepoApidata(cleanUpApiData(data.items))
+          // setRepoApidata(cleanUpApiData(data.items))
+          const repoDetails = cleanUpApiData(data.items)
+          dispatch(storeRepoDetails(repoDetails))
         })
-        .catch(() => setFetchedError(true))
+        .catch(() => storeRepoDetails(true))
     } else setError(`Please select a language`)
-    // && <RepoCard lang={lang} repoName={repoName} />
   }
+
+  // const sortByStars = () => {
+  //   repoData.sort()
+  // }
 
   const generateOptions = () => {
     return (
@@ -79,9 +86,9 @@ const Form = () => {
     {fetchedError && checkForError(statusCode)}
     {!fetchedError && 
     !error && 
-    repoApiData.length &&
+    repoData.length &&
     <RepoCard 
-      repoApiData={repoApiData}
+    repoData={repoData}
     />}
     </>
   )
