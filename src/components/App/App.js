@@ -1,9 +1,9 @@
 import React from 'react'
 import './App.css'
 import { Route, Switch } from 'react-router-dom'
-import Search from '../SearchPage/SearchPage'
 import { useSelector } from 'react-redux';
 import DetailsPage from '../DetailsPage/DetailsPage'
+import SearchPage from '../SearchPage/SearchPage';
 
 const App = () => {
   // const repoData = useSelector(store => store.repoData)
@@ -11,7 +11,7 @@ const App = () => {
   return (
       <div className="App">
         <Switch>
-          <Route exact path='/' component={Search} />
+          <Route exact path='/' component={SearchPage} />
           <Route 
           path='/detailsPage/:id' 
           render={({match}) => {
