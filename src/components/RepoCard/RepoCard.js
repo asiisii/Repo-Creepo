@@ -8,9 +8,9 @@ const RepoCard = ({repoApiData}) => {
       return (
         <div 
         className='card' 
-        id={repoData.id}
         onClick={(e) => getRepoID(e)}
         >
+          <button id={repoData.id}>👁</button>
           <h2>{repoData.repositoryName}</h2>
           <h2>{repoData.star}</h2>
           <h2>{repoData.language}</h2>
