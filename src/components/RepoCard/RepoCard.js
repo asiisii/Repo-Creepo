@@ -1,26 +1,34 @@
 import React from 'react'
-
-const RepoCard = ({lang, repoName, repoApiData}) => {
+import './RepoCard.css'
+const RepoCard = ({repoApiData}) => {
   console.log(`in repocard`)
-  console.log(lang, repoName, repoApiData)
-  const generateCards = () => {
-    return repoApiData.map(repoData => {
+  // console.log(lang, repoName, repoApiData)
+  // const generateCards = () => {
+    const cardData = repoApiData.map(repoData => {
       return (
-
-        <>
-        {/* <h1>{repoName}</h1> */}
-        <h2>{repoData.repositoryName}</h2>
-        <h2>{repoData.star}</h2>
-        <h2>{repoData.language}</h2>
-        <h2>{repoData.username}</h2>
-        {/* <h2>{repoData.viewRepo}</h2> */}
-        <p>{repoData.id}</p>
-   </>
+        <div 
+        className='card' 
+        onClick={(e) => getRepoID(e)}
+        >
+          <button id={repoData.id}>👁</button>
+          <h2>{repoData.repositoryName}</h2>
+          <h2>{repoData.star}</h2>
+          <h2>{repoData.language}</h2>
+          <h2>{repoData.username}</h2>
+          {/* <h2>{repoData.viewRepo}</h2> */}
+        </div>
     )
     })
-  }
+    
+    const getRepoID = e => {
+      const Id = e.target.id
+      console.log(Id)
+    }
+
   return (
-    generateCards()
+    <section className='cards-grids'>
+      {cardData}
+    </section>
   )
 }
 
