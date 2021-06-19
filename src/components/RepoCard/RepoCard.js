@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './RepoCard.css'
 const RepoCard = ({repoApiData}) => {
   console.log(`in repocard`)
   // console.log(lang, repoName, repoApiData)
