@@ -5,6 +5,7 @@ import { fetchRepoData, checkForError } from '../../apiData/apiCalls'
 import storeRepoDetails from '../../redux/action'
 import cleanUpApiData from '../../apiData/cleanUpApiData'
 import { useSelector, useDispatch } from 'react-redux'
+import Pagination from '../Pagination/Pagination'
 import './Form.css'
 const Form = () => {
   const [repoName, setRepoName] = useState('')
@@ -24,13 +25,11 @@ const Form = () => {
   const handleSortOptionChange = e => setSort(e.target.value)
 
   const handleSubmit = e => {
-    console.log(`submit`);
     e.preventDefault()
     setError('')
-    console.log(repoName, lang);
     if (repoName && lang && sort) {
       setFetchedError(false)
-      fetchRepoData(repoName, lang, sort)
+      fetchRepoData(repoName, lang, sort, 1)
         .then(response => {
           setStatusCode(response.status)
           return response.json()
@@ -40,14 +39,16 @@ const Form = () => {
           const repoDetails = cleanUpApiData(data.items)
           dispatch(storeRepoDetails(repoDetails))
         })
-        .catch(() => storeRepoDetails(true))
+        .catch(() => setFetchedError(true))
     } else setError(`Please fill out all the form`)
   }
 
 
   const generateLangaugeOptions = () => {
     return (
-      <select className='options' defaultValue='' onChange={(e) => handleLangaugeOptionChange(e)}>
+      <select className='options' defaultValue='' 
+      onChange={(e) => handleLangaugeOptionChange(e)}
+      >
         <option  value='' disabled>Select language</option>
         {languages.map((language, i) => {
           return (
@@ -64,7 +65,10 @@ const Form = () => {
 
   const generateSortOptions = () => {
     return (
-      <select className='options' defaultValue='' onChange={(e) => handleSortOptionChange(e)}>
+      <select 
+      className='options' defaultValue='' 
+      onChange={(e) => handleSortOptionChange(e)}
+      >
         <option value='' disabled>Sort by Stars?</option>
         <option value='&sort=stars'>Yes</option>
         <option value='/'>No</option>
@@ -93,15 +97,23 @@ const Form = () => {
         >Submit 
         </button>
       </form>
-      {error && <h1 className='option-err'>{error}</h1>}
+      {repoData.length ? 
+      <Pagination 
+        repoName={repoName} 
+        lang={lang}
+        sort={sort}
+        setStatusCode={setStatusCode}
+        setFetchedError={setFetchedError}
+      /> : null}
+      {error && <h1 className='option-err'> {error} </h1>}
       {fetchedError && checkForError(statusCode)}
       {(!fetchedError && 
-      !error && 
-      repoData.length) ?
-      <RepoCard 
-      repoData={repoData}
-      />
-        : <h1 className='please-search'>Start by searching a repository</h1>
+      !error && repoData.length) ?
+        <RepoCard /> : 
+        <h1 
+          className='please-search'
+        >Start by searching a repository
+        </h1>
       }
     </section>
   )
