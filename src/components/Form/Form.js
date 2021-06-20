@@ -27,9 +27,9 @@ const Form = () => {
     e.preventDefault()
     setError('')
     console.log(repoName, lang);
-    if (repoName && lang) {
+    if (repoName && lang && sort) {
       setFetchedError(false)
-      fetchRepoData(repoName, lang)
+      fetchRepoData(repoName, lang, sort)
         .then(response => {
           setStatusCode(response.status)
           return response.json()
@@ -40,7 +40,7 @@ const Form = () => {
           dispatch(storeRepoDetails(repoDetails))
         })
         .catch(() => storeRepoDetails(true))
-    } else setError(`Please select a language`)
+    } else setError(`Please fill out all the form`)
   }
 
 
