@@ -9,3 +9,31 @@
   border-radius: 1.5rem;
   cursor: pointer;
 }
+
+.page-num {
+  color: wheat;
+  font-size: 25px;
+}
+
+@media screen and (max-width: 480px) {
+  .page-num {
+    font-size: 20px;
+  }
+  .Pagination > button {
+    padding: 5px;
+    border: 2px solid wheat;
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .page-num {
+    display: none
+  }
+  
+  .Pagination > button {
+    padding: 5px;
+    border: 2px solid wheat;
+    font-size: 12px;
+  }
+}
