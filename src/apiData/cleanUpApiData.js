@@ -9,7 +9,7 @@ const cleanUpApiData = repos => {
       github: repo.owner.url,
       star: repo.stargazers_count,
       language: repo.language,
-      repositoryName: repo.full_name,
+      repositoryName: repo.name,
       description: repo.description,
       viewRepo: repo.html_url,
     }
