@@ -1,7 +1,6 @@
 import React from 'react'
 import './App.css'
 import { Route, Switch } from 'react-router-dom'
-import { useSelector } from 'react-redux';
 import DetailsPage from '../DetailsPage/DetailsPage'
 import SearchPage from '../SearchPage/SearchPage';
 

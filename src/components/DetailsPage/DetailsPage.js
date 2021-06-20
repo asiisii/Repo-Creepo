@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
 import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import backbtn from '../../assests/back-button.png'
 import './DetailsPage.css'
 
@@ -11,7 +12,7 @@ const  DetailsPage = ({id}) => {
   // console.log(id);
 
   const getCurrentRepo = repoData.find(repo => parseInt(id) === repo.id)
-  console.log(getCurrentRepo);
+  
   return (
       <React.Fragment>
         <Link to='/'>
@@ -21,7 +22,7 @@ const  DetailsPage = ({id}) => {
     <section className='DetailsPage'>
       <div className='details-section'>
         <article className='user-info'>
-          <img src={getCurrentRepo.imgUrl} />
+          <img src={getCurrentRepo.imgUrl} alt={`${getCurrentRepo.username}'s profile pic`} />
           <h1>@{getCurrentRepo.username}</h1>
         </article>
         <article className='repo-info'>
@@ -40,5 +41,8 @@ const  DetailsPage = ({id}) => {
   )
 }
 
+DetailsPage.propTypes = {
+  id: PropTypes.string
+}
 
 export default DetailsPage
