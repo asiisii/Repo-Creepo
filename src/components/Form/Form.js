@@ -5,6 +5,7 @@ import { fetchRepoData, checkForError } from '../../apiData/apiCalls'
 import storeRepoDetails from '../../redux/action'
 import cleanUpApiData from '../../apiData/cleanUpApiData'
 import { useSelector, useDispatch } from 'react-redux'
+import Pagination from '../Pagination/Pagination'
 import './Form.css'
 const Form = () => {
   const [repoName, setRepoName] = useState('')
@@ -96,6 +97,7 @@ const Form = () => {
         >Submit 
         </button>
       </form>
+      <Pagination />
       {error && <h1 className='option-err'> {error} </h1>}
       {fetchedError && checkForError(statusCode)}
       {(!fetchedError && 
