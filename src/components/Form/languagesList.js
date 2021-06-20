@@ -3,6 +3,10 @@
 
 const langs = [
   {
+    label: 'All', 
+    value: 'all'
+  },
+  {
     label: 'JavaScript', 
     value: 'javascript'
   },
