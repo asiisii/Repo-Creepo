@@ -55,7 +55,7 @@ console.log(pageNum);
       > 👈 Previous Page</button> : 
       null}
 
-      <p><span>Page Num: </span> {pageNum}</p>
+      <p className='page-num'><span>Page Num: </span> {pageNum}</p>
 
       {repoData.length === 30 ? 
       <button className='next'
