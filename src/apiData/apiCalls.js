@@ -1,7 +1,7 @@
 const baseUrl = 'https://api.github.com/search/repositories?q='
 
-const fetchRepoData = (repoName, language, sort) => {
-  return fetch(`${baseUrl}${repoName}+language:${language}${sort}`)
+const fetchRepoData = (repoName, language, sort, pageNum) => {
+  return fetch(`${baseUrl}${repoName}+language:${language}${sort}&page=${pageNum}`)
 }
 
 const checkForError = status => {
@@ -32,3 +32,5 @@ export {
 }
 // sample api 
 //https://api.github.com/search/repositories?q=hello+language:C#&sort=stars'
+
+// &page=1
