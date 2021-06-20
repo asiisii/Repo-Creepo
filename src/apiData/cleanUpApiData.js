@@ -1,6 +1,4 @@
-
 const cleanUpApiData = repos => {
-  console.log(repos);
   const details = repos.map(repo => {
     return {
       id: repo.id,
@@ -14,7 +12,6 @@ const cleanUpApiData = repos => {
       viewRepo: repo.html_url,
     }
   })
-  console.log(details)
   return details
 }
 
