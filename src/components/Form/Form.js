@@ -17,7 +17,7 @@ const Form = () => {
 
   const handleRepoNameChange = e => setRepoName(e.target.value)
 
-  const handleOptionChange = e => setLang(e.target.value)
+  const handleLangaugeOptionChange = e => setLang(e.target.value)
 
   const handleSubmit = e => {
     console.log(`submit`);
@@ -44,9 +44,9 @@ const Form = () => {
   //   repoData.sort()
   // }
 
-  const generateOptions = () => {
+  const generateLangaugeOptions = () => {
     return (
-      <select  defaultValue='' onChange={(e) => handleOptionChange(e)}>
+      <select  defaultValue='' onChange={(e) => handleLangaugeOptionChange(e)}>
         <option  value='' disabled>Select language</option>
         <option value='all' >All</option>
         {languages.map((language, i) => {
@@ -62,6 +62,8 @@ const Form = () => {
     )
   }
 
+ 
+
   return (
     <>
     <form className='div' onSubmit={(e) => handleSubmit(e)} >
@@ -74,7 +76,7 @@ const Form = () => {
         value={repoName}
         onChange={(e) => handleRepoNameChange(e)}
       />
-      {generateOptions()}
+      {generateLangaugeOptions()}
       <button 
         className='search-btn' 
         type='submit' 
