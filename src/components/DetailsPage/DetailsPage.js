@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import backbtn from '../../assests/back-button.png'
 import './DetailsPage.css'
 
@@ -40,5 +41,8 @@ const  DetailsPage = ({id}) => {
   )
 }
 
+DetailsPage.propTypes = {
+  id: PropTypes.string
+}
 
 export default DetailsPage
