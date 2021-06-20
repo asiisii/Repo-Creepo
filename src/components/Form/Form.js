@@ -39,7 +39,7 @@ const Form = () => {
           const repoDetails = cleanUpApiData(data.items)
           dispatch(storeRepoDetails(repoDetails))
         })
-        .catch(() => storeRepoDetails(true))
+        .catch(() => setFetchedError(true))
     } else setError(`Please fill out all the form`)
   }
 
@@ -97,7 +97,14 @@ const Form = () => {
         >Submit 
         </button>
       </form>
-      {repoData.length ? <Pagination /> : null}
+      {repoData.length ? 
+      <Pagination 
+        repoName={repoName} 
+        lang={lang}
+        sort={sort}
+        setStatusCode={setStatusCode}
+        setFetchedError={setFetchedError}
+      /> : null}
       {error && <h1 className='option-err'> {error} </h1>}
       {fetchedError && checkForError(statusCode)}
       {(!fetchedError && 
