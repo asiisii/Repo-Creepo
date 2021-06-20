@@ -8,3 +8,10 @@ header {
   color: wheat;
   cursor: default;
 }
+
+
+@media screen and (max-width: 710px) {
+  .app-name {
+    font-size: 40px;
+  }
+}
