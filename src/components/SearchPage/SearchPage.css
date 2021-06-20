@@ -6,4 +6,5 @@ header {
 .app-name {
   font-size: 50px;
   color: wheat;
+  cursor: default;
 }
