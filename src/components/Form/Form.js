@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux'
 const Form = () => {
   const [repoName, setRepoName] = useState('')
   const [lang, setLang] = useState('')
+  const [sort, setSort] = useState('')
   const [statusCode, setStatusCode] = useState(200)
   const [fetchedError, setFetchedError] = useState(false)
   const [error, setError] = useState('')
@@ -18,6 +19,8 @@ const Form = () => {
   const handleRepoNameChange = e => setRepoName(e.target.value)
 
   const handleLangaugeOptionChange = e => setLang(e.target.value)
+
+  const handleSortOptionChange = e => setSort(e.target.value)
 
   const handleSubmit = e => {
     console.log(`submit`);
@@ -40,9 +43,6 @@ const Form = () => {
     } else setError(`Please select a language`)
   }
 
-  // const sortByStars = () => {
-  //   repoData.sort()
-  // }
 
   const generateLangaugeOptions = () => {
     return (
@@ -62,7 +62,15 @@ const Form = () => {
     )
   }
 
- 
+  const generateSortOptions = () => {
+    return (
+      <select defaultValue='' onChange={(e) => handleSortOptionChange(e)}>
+        <option value='' disabled>Sort by Stars?</option>
+        <option value='&sort=stars'>Yes</option>
+        <option value='/'>No</option>
+      </select>
+    )
+  }
 
   return (
     <>
@@ -77,6 +85,7 @@ const Form = () => {
         onChange={(e) => handleRepoNameChange(e)}
       />
       {generateLangaugeOptions()}
+      {generateSortOptions()}
       <button 
         className='search-btn' 
         type='submit' 
