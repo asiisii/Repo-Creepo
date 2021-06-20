@@ -1,13 +1,14 @@
 .repo-cards {
-  height: 100vh;
-  background: #3803b4;
+  min-height: 100vh;
+  background: #2c028d;
 }
+
 
 .form {
   display: flex;
   justify-content: center;
   padding: 2%;
-  background: #30039c;
+  background: #2c028d;
 }
 
 input[type="text"] {
