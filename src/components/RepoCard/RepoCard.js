@@ -12,7 +12,7 @@ const RepoCard = () => {
       return (
         <article 
         className='card' 
-        // onClick={(e) => getRepoID(e)}
+        key={repoData.id}
         >
           <h2><span>Repo Name:</span> {repoData.repositoryName}</h2>
           <h2><span>#'s of stars:</span> {repoData.star}</h2>
@@ -28,10 +28,6 @@ const RepoCard = () => {
     )
     })
     
-    const getRepoID = e => {
-      const Id = e.target.id
-      console.log(Id)
-    }
 
   return (
     <section className='cards-flex'>
