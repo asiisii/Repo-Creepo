@@ -1,11 +1,36 @@
-.cards-grids {
-  display: grid;
+.cards-flex {
+  display: flex;
   justify-content: center;
-  grid-template-columns: repeat(4, 1fr);
-  /* column-gap: 10px; */
-  /* row-gap: 10px; */
+  flex-wrap: wrap;
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border: 2px solid gray;
+  margin: 10px;
+  padding: 10px;
+  color: wheat;
+  width: 350px;
+  height: 250px;
+  font-size: 12px;
+  cursor: default;
+}
+
+span {
+  color: rgb(253, 189, 61);
+}
+
+a {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+  margin-top: 10px;
+  
+}
+
+.view {
+  cursor: pointer;
 }
