@@ -24,6 +24,10 @@ const App = () => {
             )
           }}
           />
+          <Route render= {() => {
+          return <h1>Page Not Found</h1>
+        }}
+        /> 
         </Switch>
       </div>
   )
