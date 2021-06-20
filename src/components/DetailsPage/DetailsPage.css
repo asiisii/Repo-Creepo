@@ -1,0 +1,19 @@
+.details-section {
+  width: 1000px;
+  padding: 2%;
+  background: rgba(43, 3, 141, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-top: 7%;
+}
+
+.back-btn {
+  width: 90px;
+  margin: 5% 5% 0;
+}
