@@ -12,9 +12,6 @@ const Pagination = ({repoName, lang, sort, setStatusCode, setFetchedError}) => {
   const dispatch = useDispatch()
   const repoData = useSelector(store => store.repoData)
 
-    // if repoData.length is 0 then disabled both buttons
-  // if pageNum is 1 then Previous button is disabled 
-  // if repoData.length < 30 then make the Next button disabled
   const handleNextBtnClick = () => {
     setPageNum(pageNum + 1)
    setFetchedError(false)
@@ -32,7 +29,7 @@ const Pagination = ({repoName, lang, sort, setStatusCode, setFetchedError}) => {
 
   const handlePreviousBtnClick = () => {
     setPageNum(pageNum - 1)
-   setFetchedError(false)
+    setFetchedError(false)
     fetchRepoData(repoName, lang, sort, pageNum)
       .then(response => {
        setStatusCode(response.status)
@@ -45,26 +42,22 @@ const Pagination = ({repoName, lang, sort, setStatusCode, setFetchedError}) => {
       .catch(() =>setFetchedError(true))
   }
   
-console.log(pageNum);
   return (
-    <>
     <section className='Pagination'>
-      {pageNum > 1 ? 
-      <button className='previous'
-      onClick={handlePreviousBtnClick}
-      > 👈 Previous Page</button> : 
-      null}
-
-      <p className='page-num'><span>Page Num: </span> {pageNum}</p>
-
-      {repoData.length === 30 ? 
-      <button className='next'
-      onClick={handleNextBtnClick}
-      >Next Page 👉</button> : 
-      null }
+      { pageNum > 1 ? 
+        <button className='previous'
+        onClick={handlePreviousBtnClick}
+        > 👈 Previous Page</button> : 
+        null 
+      }
+      <p className='page-num'> <span> Page Num: </span> {pageNum}</p>
+      { repoData.length === 30 ? 
+        <button className='next'
+        onClick={handleNextBtnClick}
+        >Next Page 👉</button> : 
+        null
+      }
     </section>
-    
-      </>
   )
 }
 

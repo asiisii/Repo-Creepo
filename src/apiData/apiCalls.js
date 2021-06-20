@@ -24,13 +24,7 @@ const checkForError = status => {
 
 }
 
-
-
 export {
   fetchRepoData, 
   checkForError
 }
-// sample api 
-//https://api.github.com/search/repositories?q=hello+language:C#&sort=stars'
-
-// &page=1

@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchRepoData, checkForError } from '../../apiData/apiCalls'
 import languages from './languagesList'
 import RepoCard from '../RepoCard/RepoCard'
-import { fetchRepoData, checkForError } from '../../apiData/apiCalls'
 import storeRepoDetails from '../../redux/action'
 import cleanUpApiData from '../../apiData/cleanUpApiData'
-import { useSelector, useDispatch } from 'react-redux'
 import Pagination from '../Pagination/Pagination'
 import './Form.css'
+
 const Form = () => {
   const [repoName, setRepoName] = useState('')
   const [lang, setLang] = useState('')
@@ -35,14 +36,12 @@ const Form = () => {
           return response.json()
         })
         .then(data => {
-          // setRepoApidata(cleanUpApiData(data.items))
           const repoDetails = cleanUpApiData(data.items)
           dispatch(storeRepoDetails(repoDetails))
         })
         .catch(() => setFetchedError(true))
     } else setError(`Please fill out all the form`)
   }
-
 
   const generateLangaugeOptions = () => {
     return (

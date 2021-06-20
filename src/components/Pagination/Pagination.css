@@ -13,12 +13,14 @@
 .page-num {
   color: wheat;
   font-size: 25px;
+  cursor: default;
 }
 
 @media screen and (max-width: 480px) {
   .page-num {
     font-size: 20px;
   }
+  
   .Pagination > button {
     padding: 5px;
     border: 2px solid wheat;
@@ -30,7 +32,7 @@
   .page-num {
     display: none
   }
-  
+
   .Pagination > button {
     padding: 5px;
     border: 2px solid wheat;

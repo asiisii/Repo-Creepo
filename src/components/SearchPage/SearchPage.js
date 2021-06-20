@@ -3,6 +3,7 @@ import Form from '../Form/Form'
 import './SearchPage.css'
 
 const SearchPage = () => {
+  
   return (
     <div className='SearchPage'>
       <header>
