@@ -29,7 +29,7 @@ const Form = () => {
     setError('')
     if (repoName && lang && sort) {
       setFetchedError(false)
-      fetchRepoData(repoName, lang, sort)
+      fetchRepoData(repoName, lang, sort, 1)
         .then(response => {
           setStatusCode(response.status)
           return response.json()
@@ -97,7 +97,7 @@ const Form = () => {
         >Submit 
         </button>
       </form>
-      <Pagination />
+      {repoData.length ? <Pagination /> : null}
       {error && <h1 className='option-err'> {error} </h1>}
       {fetchedError && checkForError(statusCode)}
       {(!fetchedError && 
