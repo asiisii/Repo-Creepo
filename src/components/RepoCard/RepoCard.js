@@ -14,6 +14,11 @@ const RepoCard = () => {
         className='card' 
         // onClick={(e) => getRepoID(e)}
         >
+          <h2><span>Repo Name:</span> {repoData.repositoryName}</h2>
+          <h2><span>#'s of stars:</span> {repoData.star}</h2>
+          <h2><span>Language:</span> {repoData.language}</h2>
+          <h2><span>Owner:</span> {repoData.username}</h2>
+          {/* <h2>{repoData.viewRepo}</h2> */}
           <Link 
           // id={repoData.id}
           to={`/detailsPage/${repoData.id}`}
@@ -21,13 +26,11 @@ const RepoCard = () => {
           // component={DetailsPage }
           
            >
-             👁
+             <button className='view'>
+
+             👁 Me
+             </button>
              </Link>
-          <h2>{repoData.repositoryName}</h2>
-          <h2>{repoData.star}</h2>
-          <h2>{repoData.language}</h2>
-          <h2>{repoData.username}</h2>
-          {/* <h2>{repoData.viewRepo}</h2> */}
         </article>
     )
     })
