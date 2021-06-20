@@ -41,7 +41,7 @@ const RepoCard = () => {
     }
 
   return (
-    <section className='cards-grids'>
+    <section className='cards-flex'>
       {cardData}
     </section>
   )
