@@ -5,6 +5,7 @@ import { fetchRepoData, checkForError } from '../../apiData/apiCalls'
 import storeRepoDetails from '../../redux/action'
 import cleanUpApiData from '../../apiData/cleanUpApiData'
 import { useSelector, useDispatch } from 'react-redux'
+import './Form.css'
 const Form = () => {
   const [repoName, setRepoName] = useState('')
   const [lang, setLang] = useState('')
@@ -46,9 +47,8 @@ const Form = () => {
 
   const generateLangaugeOptions = () => {
     return (
-      <select  defaultValue='' onChange={(e) => handleLangaugeOptionChange(e)}>
+      <select className='options' defaultValue='' onChange={(e) => handleLangaugeOptionChange(e)}>
         <option  value='' disabled>Select language</option>
-        <option value='all' >All</option>
         {languages.map((language, i) => {
           return (
             <option 
@@ -64,7 +64,7 @@ const Form = () => {
 
   const generateSortOptions = () => {
     return (
-      <select defaultValue='' onChange={(e) => handleSortOptionChange(e)}>
+      <select className='options' defaultValue='' onChange={(e) => handleSortOptionChange(e)}>
         <option value='' disabled>Sort by Stars?</option>
         <option value='&sort=stars'>Yes</option>
         <option value='/'>No</option>
@@ -73,35 +73,37 @@ const Form = () => {
   }
 
   return (
-    <>
-    <form className='div' onSubmit={(e) => handleSubmit(e)} >
-      <input 
-        required
-        type='text'
-        name='repoName'
-        placeholder='Enter a repository name...'
-        autoComplete='off'
-        value={repoName}
-        onChange={(e) => handleRepoNameChange(e)}
+    <section className='repo-cards'>
+      <form className='form' onSubmit={(e) => handleSubmit(e)} >
+        <input 
+          required
+          type='text'
+          name='repoName'
+          placeholder='Ex:Repo-Creepo'
+          autoComplete='off'
+          value={repoName}
+          onChange={(e) => handleRepoNameChange(e)}
+        />
+        {generateLangaugeOptions()}
+        {generateSortOptions()}
+        <button 
+          className='search-btn' 
+          type='submit' 
+          value="Submit" 
+        >Submit 
+        </button>
+      </form>
+      {error && <h1 className='option-err'>{error}</h1>}
+      {fetchedError && checkForError(statusCode)}
+      {(!fetchedError && 
+      !error && 
+      repoData.length) ?
+      <RepoCard 
+      repoData={repoData}
       />
-      {generateLangaugeOptions()}
-      {generateSortOptions()}
-      <button 
-        className='search-btn' 
-        type='submit' 
-        value="Submit" 
-       >Search Repo 
-      </button>
-    </form>
-    {error && <h1 className='option-err'>{error}</h1>}
-    {fetchedError && checkForError(statusCode)}
-    {!fetchedError && 
-    !error && 
-    repoData.length &&
-    <RepoCard 
-    repoData={repoData}
-    />}
-    </>
+        : <h1 className='please-search'>Start by searching a repository</h1>
+      }
+    </section>
   )
 }
 
