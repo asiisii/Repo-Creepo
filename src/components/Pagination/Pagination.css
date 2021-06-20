@@ -13,6 +13,7 @@
 .page-num {
   color: wheat;
   font-size: 25px;
+  cursor: default;
 }
 
 @media screen and (max-width: 480px) {
