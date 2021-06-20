@@ -1,9 +1,11 @@
 const baseUrl = 'https://api.github.com/search/repositories?q='
 
+//fetches all the matched repo data
 const fetchRepoData = (repoName, language, sort, pageNum) => {
   return fetch(`${baseUrl}${repoName}+language:${language}${sort}&page=${pageNum}`)
 }
 
+//if theres a fetched error then the status code will be sent here and will display the correct error message
 const checkForError = status => {
   let errorMsg;
   switch (status) {

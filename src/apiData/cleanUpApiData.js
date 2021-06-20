@@ -1,3 +1,5 @@
+//After fetching the repo api data, the data will be sent here to filter out the required data
+// and will return the required data only 
 const cleanUpApiData = repos => {
   const details = repos.map(repo => {
     return {

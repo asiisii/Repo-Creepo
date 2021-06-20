@@ -12,6 +12,7 @@ import { Provider } from 'react-redux';
 
 const store = createStore(
   allReducers,
+  // this will allow us to use Redux devetools on the browser
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 

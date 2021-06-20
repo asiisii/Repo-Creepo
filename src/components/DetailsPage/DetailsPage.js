@@ -12,7 +12,9 @@ const  DetailsPage = ({id}) => {
   const getCurrentRepo = repoData.find(repo => parseInt(id) === repo.id)
   
   return (
+    // used React.Fragment to eliminate unnecessary use of Div's
     <React.Fragment>
+      {/* when clicked on the back button it will direct the user to the search page */}
       <Link to='/'>
         <img src={backbtn} alt='back-button'  className='back-btn'/>
       </Link>
@@ -36,6 +38,7 @@ const  DetailsPage = ({id}) => {
             </article>
           </div>
         </section>
+        // if the repoData has no data in it then the user will be redirected to the search page 
         : <Redirect to='/' />
       }
     </React.Fragment>
