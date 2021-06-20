@@ -25,13 +25,12 @@ const  DetailsPage = ({id}) => {
           <h1>@{getCurrentRepo.username}</h1>
         </article>
         <article className='repo-info'>
-          <h1>User github: {getCurrentRepo.github}</h1>
-          <h1>Full repository name: {getCurrentRepo.repositoryName}</h1>
-          <h1>Stars: {getCurrentRepo.star}</h1>
-          <h1>Language: {getCurrentRepo.language}</h1>
-          <h1>View Repo: {getCurrentRepo.viewRepo}</h1>
-          <h1>Description: {getCurrentRepo.description}</h1> 
-          <h1>View Repo: {getCurrentRepo.viewRepo}</h1>
+          <h1><span>Repo name: </span>  {getCurrentRepo.repositoryName}</h1>
+          <h1><span>Stars: </span>  {getCurrentRepo.star}</h1>
+          <h1><span>Language: </span>  {getCurrentRepo.language}</h1>
+          <h1><span>Description: </span>  {getCurrentRepo.description}</h1> 
+          <h1><span>View GitHub Profile: </span>  {getCurrentRepo.github}</h1>
+          <h1><span>View Repo: </span>  {getCurrentRepo.viewRepo}</h1>
         </article>
       </div>
     </section>
