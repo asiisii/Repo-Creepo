@@ -1,11 +1,12 @@
 import React from 'react'
 import Form from '../Form/Form'
+import './SearchPage.css'
 
 const SearchPage = () => {
   return (
-    <div className='Search'>
+    <div className='SearchPage'>
       <header>
-        <h1>Repo Creep🔍</h1>
+        <h1 className='app-name'>RepoCr👀po</h1>
       </header>
       <Form />
     </div>

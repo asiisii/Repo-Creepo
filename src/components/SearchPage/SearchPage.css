@@ -1,0 +1,17 @@
+header {
+  padding: 40px;
+  background: #23036A
+}
+
+.app-name {
+  font-size: 50px;
+  color: wheat;
+  cursor: default;
+}
+
+
+@media screen and (max-width: 710px) {
+  .app-name {
+    font-size: 40px;
+  }
+}
