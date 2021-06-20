@@ -2,7 +2,6 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import DetailsPage from '../DetailsPage/DetailsPage'
 import SearchPage from '../SearchPage/SearchPage';
-import './App.css'
 
 const App = () => {
   return (
