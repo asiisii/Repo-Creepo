@@ -19,18 +19,11 @@ const RepoCard = () => {
           <h2><span>Language:</span> {repoData.language}</h2>
           <h2><span>Owner:</span> {repoData.username}</h2>
           {/* <h2>{repoData.viewRepo}</h2> */}
-          <Link 
-          // id={repoData.id}
-          to={`/detailsPage/${repoData.id}`}
-          // onClick={(e) => getRepoID(e)}
-          // component={DetailsPage }
-          
-           >
-             <button className='view'>
-
+          <Link to={`/detailsPage/${repoData.id}`}>
+            <button className='view'>
              👁 Me
-             </button>
-             </Link>
+            </button>
+          </Link>
         </article>
     )
     })
