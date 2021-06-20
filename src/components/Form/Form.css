@@ -1,0 +1,66 @@
+.repo-cards {
+  height: 100vh;
+  background: #3803b4;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  padding: 2%;
+  background: #30039c;
+}
+
+input[type="text"] {
+  padding: 10px;
+  width: 500px;
+  border: 3px solid wheat;
+  border-radius: 1.5rem;
+}
+
+.search-btn {
+  background: #088685;
+  color: #c8fdf4;
+}
+
+.search-btn,
+.options {
+  border: 3px solid wheat;
+  border-radius: 1.5rem;
+  font-size: 15px;
+  padding: 10px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.please-search {
+  text-align: center;
+  font-size: 40px;
+  padding: 2%;
+  color: wheat;
+  cursor: default;
+}
+
+@media screen and (max-width: 710px) {
+  .form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+
+  input[type="text"],
+  .search-btn,
+  .options {
+    width: 90%;
+    margin: 10px auto;
+    padding: 5px;
+    font-size: 12px;
+  }
+
+  .search-btn {
+    font-size: 15px;
+  }
+
+  .please-search {
+    font-size: 30px;
+  }
+}
