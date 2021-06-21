@@ -40,8 +40,8 @@ const Form = () => {
         .then(data => {
           const repoDetails = cleanUpApiData(data.items)
           !repoDetails.length ?
-            setError(`Sorry we couldn't find the repositoy you're looking for`) :
-            dispatch(storeRepoDetails(repoDetails)) 
+          setError(`Sorry we couldn't find the repositoy you're looking for`) :
+          dispatch(storeRepoDetails(repoDetails)) 
         })
         .catch(() => setFetchedError(true))
     } else setError(`Please fill out all the form`)
