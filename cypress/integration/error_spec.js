@@ -61,11 +61,15 @@ describe('Error', () => {
       .contains('Sorry we couldn\'t find the repository you\'re looking for')
   })
 
-  it.only('should display error message when user tries to submit empty repository name', () => {
+  it.only('should display error message when user tries to submit empty inputs', () => {
     cy.visit('http://localhost:3000')
       .get('button[value="Submit"]').click()
       .get('input[name="repoName"]:invalid')
       .invoke('prop', 'validationMessage')
       .should('equal', 'Please fill out this field.')
+      .get('input[name="repoName"]').type('repo-creeop')
+      .get('button[value="Submit"]').click()
+      .get('.option-err')
+      .contains('Please fill out all the form')
   })
 })
