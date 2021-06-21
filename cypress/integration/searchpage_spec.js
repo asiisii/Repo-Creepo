@@ -3,7 +3,7 @@ describe('Search page', () => {
     cy.visit('http://localhost:3000')
   })
 
-  it.only('should be able to see all the content in search page', () => {
+  it('should be able to see all the content in search page', () => {
     cy.get('.SearchPage')
       .find('header').should('have.text', 'RepoCr👀po')
       .get('form')
@@ -63,5 +63,23 @@ describe('Search page', () => {
       .interceptReactionary()
       .get('button[value="Submit"]').click()
       .get('.card').should('have.length', 30)
+  })
+
+  it.only('should update DOM with pagination', () => {
+    cy.get('input[name="repoName"]').type('reactionary')
+      .get('select').eq(0).select('javascript')
+      .get('select').eq(1).select('Yes')
+      // intercept fetch call and give reactionary repo dummy data page 1
+      .interceptReactionary()
+      .get('button[value="Submit"]').click()
+      .get('article.card').eq(0)
+      .find('h2').should('have.length', 4)
+      .eq(0).contains('Repo Name: Reactionary')
+      .get('article.card').eq(0).find('h2')
+      .eq(1).contains('#\'s of stars: 1')
+      .get('article.card').eq(0).find('h2')
+      .eq(2).contains('Language: JavaScript')
+      .get('article.card').eq(0).find('h2')
+      .eq(3).contains('Owner: a')
   })
 })
