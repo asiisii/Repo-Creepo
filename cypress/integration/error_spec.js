@@ -51,7 +51,7 @@ describe('Error', () => {
       .contains('Oops! Request failed. Please try again.')
   })
 
-  it.only('should display error message when invalid repository is submitted', () => {
+  it('should display error message when invalid repository is submitted', () => {
     cy.visit('http://localhost:3000')
       .get('input[name="repoName"]').type('repo-creeop')
       .get('select').eq(0).select('javascript')
@@ -59,5 +59,13 @@ describe('Error', () => {
       .get('button[value="Submit"]').click()
       .get('.option-err')
       .contains('Sorry we couldn\'t find the repository you\'re looking for')
+  })
+
+  it.only('should display error message when user tries to submit empty repository name', () => {
+    cy.visit('http://localhost:3000')
+      .get('button[value="Submit"]').click()
+      .get('input[name="repoName"]:invalid')
+      .invoke('prop', 'validationMessage')
+      .should('equal', 'Please fill out this field.')
   })
 })
