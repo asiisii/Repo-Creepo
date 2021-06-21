@@ -80,7 +80,7 @@ Then:-
  -  `npm start` in your terminal to view it on your browser
  -  If browser doesn't open automatically, open the browser and navigate to `http://localhost:3000`
 #### To run the Cypress test 
- -  `npm run Cypress` in your terminal to run the Cypress test
+ -  `npm run Cypress` in your terminal to run the Cypress test (make sure the app is still running on `http://localhost:3000`)
  -  Then click on `_spec.js` files to run each test
    
 
