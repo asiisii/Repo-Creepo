@@ -9,22 +9,24 @@ import Pagination from '../Pagination/Pagination'
 import './Form.css'
 
 const Form = () => {
+  //added different state to hold values 
   const [repoName, setRepoName] = useState('')
   const [lang, setLang] = useState('')
   const [sort, setSort] = useState('')
   const [statusCode, setStatusCode] = useState(200)
   const [fetchedError, setFetchedError] = useState(false)
   const [error, setError] = useState('')
-
+  //imported useDispatch to be able to invoke action
   const dispatch = useDispatch()
+  //access repoData that's getting stored in the Redux
   const repoData = useSelector(store => store.repoData)
-
+  //constrolled form for repoName, lang, and sort state
   const handleRepoNameChange = e => setRepoName(e.target.value)
 
   const handleLangaugeOptionChange = e => setLang(e.target.value)
 
   const handleSortOptionChange = e => setSort(e.target.value)
-
+  //fetches the repository data after submit button is clicked 
   const handleSubmit = e => {
     e.preventDefault()
     setError('')
@@ -42,7 +44,7 @@ const Form = () => {
         .catch(() => setFetchedError(true))
     } else setError(`Please fill out all the form`)
   }
-
+  //will generate select tags with language options using the languages data thats in languagelist file
   const generateLangaugeOptions = () => {
     return (
       <select className='options' defaultValue='' 
@@ -61,7 +63,7 @@ const Form = () => {
       </select>
     )
   }
-
+  //generate select tags with yes or no option for sorting 
   const generateSortOptions = () => {
     return (
       <select 
@@ -96,6 +98,7 @@ const Form = () => {
         >Submit 
         </button>
       </form>
+      {/* Pagination component will only gets displayed when theres some kind of repo data */}
       {repoData.length ? 
       <Pagination 
         repoName={repoName} 
@@ -106,6 +109,8 @@ const Form = () => {
       /> : null}
       {error && <h1 className='option-err'> {error} </h1>}
       {fetchedError && checkForError(statusCode)}
+      {/* RepoCard will only render after fetching the data sucessfully
+      if not then it will let user know they still need to search */}
       {(!fetchedError && 
       !error && repoData.length) ?
         <RepoCard /> : 

@@ -1,3 +1,4 @@
+/* used glassmorphism to give details section glass effect */
 .details-section {
   width: 1300px;
   font-size: 25px;
@@ -28,6 +29,7 @@
   margin: 1% 5% 0;
 }
 
+/* To make details page responsive added media queries */
 @media screen and (max-width: 1075px) {
   .details-section {
     width: 900px;

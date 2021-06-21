@@ -6,7 +6,7 @@ import './RepoCard.css'
 const RepoCard = () => {
   
   const repoData = useSelector(store => store.repoData)
-
+  //makes 30 mini repository cards using the repoData that was stored globally in Redux
   const cardData = repoData.map(repoData => {
     return (
       <article className='card' key={repoData.id} >
@@ -14,7 +14,7 @@ const RepoCard = () => {
         <h2><span>#'s of stars:</span> {repoData.star}</h2>
         <h2><span>Language:</span> {repoData.language}</h2>
         <h2><span>Owner:</span> {repoData.username}</h2>
-        
+        {/* will display the details page when clicked on it */}
         <Link to={`/detailsPage/${repoData.id}`}>
           <button className='view'>
             👁 Me

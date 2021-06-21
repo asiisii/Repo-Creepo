@@ -3,7 +3,7 @@ import Form from '../Form/Form'
 import './SearchPage.css'
 
 const SearchPage = () => {
-  
+  //this component is responsible for displaying content in the search page
   return (
     <div className='SearchPage'>
       <header>

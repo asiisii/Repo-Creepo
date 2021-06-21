@@ -9,7 +9,7 @@ header {
   cursor: default;
 }
 
-
+/* To make Searchpage component responsive added media queries */
 @media screen and (max-width: 710px) {
   .app-name {
     font-size: 40px;
