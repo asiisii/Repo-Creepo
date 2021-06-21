@@ -23,7 +23,7 @@ const Pagination = ({repoName, lang, sort, setStatusCode, setFetchedError}) => {
     setPageNum(pageNum - 1)
     setFetchedError(false)
   }
-
+//everytime there's a change in page number useEffect will get triggered
   useEffect(() => {
     fetchRepoData(repoName, lang, sort, pageNum)
     .then(response => {
@@ -35,7 +35,6 @@ const Pagination = ({repoName, lang, sort, setStatusCode, setFetchedError}) => {
       dispatch(storeRepoDetails(repoDetails))
     })
     .catch(() =>setFetchedError(true))
-
   }, [pageNum])
 
   
