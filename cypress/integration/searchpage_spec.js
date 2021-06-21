@@ -65,13 +65,15 @@ describe('Search page', () => {
       .get('.card').should('have.length', 30)
   })
 
-  it.only('should update DOM with pagination', () => {
+  it('should update DOM with pagination', () => {
     cy.get('input[name="repoName"]').type('reactionary')
       .get('select').eq(0).select('javascript')
       .get('select').eq(1).select('Yes')
       // intercept fetch call and give reactionary repo dummy data page 1
       .interceptReactionary()
       .get('button[value="Submit"]').click()
+      .get('article.card').eq(0)
+      .get('.view').should('exist')
       .get('article.card').eq(0)
       .find('h2').should('have.length', 4)
       .eq(0).contains('Repo Name: Reactionary')
