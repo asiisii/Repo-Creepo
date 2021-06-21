@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { fetchRepoData } from '../../apiData/apiCalls'
 import storeRepoDetails from '../../redux/action'
 import cleanUpApiData from '../../apiData/cleanUpApiData'
+import PropTypes from 'prop-types';
 import './Pagination.css'
 
 const Pagination = ({repoName, lang, sort, setStatusCode, setFetchedError}) => {
@@ -63,5 +64,14 @@ const Pagination = ({repoName, lang, sort, setStatusCode, setFetchedError}) => {
     </section>
   )
 }
+
+Pagination.propTypes = {
+  repoName: PropTypes.string,
+  lang: PropTypes.string,
+  sort: PropTypes.string,
+  setStatusCode: PropTypes.func,
+  setFetchedError: PropTypes.func,
+}
+
 
 export default Pagination
