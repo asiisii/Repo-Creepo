@@ -74,8 +74,11 @@ Fully responsive application with accessibility score of 100 (tested via lightho
 1. Clone this [repository](https://github.com/asiisii/Repo-Creepo)
 2. `cd` into the repository in your terminal
 3. `npm i` to install required dependencies 
+
+Then:-
 #### To run the app
  -  `npm start` in your terminal to view it on your browser
+ -  If browser doesn't open automatically, open the browser and navigate to `http://localhost:3000`
 #### To run the Cypress test 
  -  `npm run Cypress` in your terminal to run the Cypress test
  -  Then click on `_spec.js` files to run each test
