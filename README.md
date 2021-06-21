@@ -44,7 +44,7 @@ App that allows users search for repository using the [Github repository search 
 
 ### GitHub Repo [LINK](https://github.com/asiisii/Repo-Creepo)
 
-### Deployed [LINK](https://reverent-payne-1adcf0.netlify.app/) 
+### Deployed [LINK](https://repocreepo.netlify.app/) 
   
 ## Features
 
