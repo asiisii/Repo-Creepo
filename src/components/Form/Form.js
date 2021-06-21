@@ -40,7 +40,7 @@ const Form = () => {
         .then(data => {
           const repoDetails = cleanUpApiData(data.items)
           !repoDetails.length ?
-          setError(`Sorry we couldn't find the repositoy you're looking for`) :
+          setError(`Sorry we couldn't find the repository you're looking for`) :
           dispatch(storeRepoDetails(repoDetails)) 
         })
         .catch(() => setFetchedError(true))
@@ -109,17 +109,17 @@ const Form = () => {
         setStatusCode={setStatusCode}
         setFetchedError={setFetchedError}
       /> : null}
+      {!fetchedError && 
+      !error && !repoData.length && 
+      <h1 className='search-msg'>Please start by searching a repository</h1>
+      }
       {error && <h1 className='option-err'> {error} </h1>}
       {fetchedError && checkForError(statusCode)}
       {/* RepoCard will only render after fetching the data sucessfully
       if not then it will let user know they still need to search */}
       {(!fetchedError && 
       !error && repoData.length) ?
-        <RepoCard /> : 
-        <h1 
-          className='please-search'
-        >Start by searching a repository
-        </h1>
+        <RepoCard /> : null
       }
     </section>
   )
