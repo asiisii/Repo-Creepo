@@ -32,8 +32,9 @@ input[type="text"] {
   cursor: pointer;
 }
 
-.please-search,
-.option-err {
+.search-msg,
+.option-err,
+.error-msg {
   text-align: center;
   font-size: 40px;
   padding: 2%;
