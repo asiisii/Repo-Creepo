@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchRepoData } from '../../apiData/apiCalls'
 import storeRepoDetails from '../../redux/action'
@@ -12,36 +12,32 @@ const Pagination = ({repoName, lang, sort, setStatusCode, setFetchedError}) => {
 
   const dispatch = useDispatch()
   const repoData = useSelector(store => store.repoData)
+
   //this function will INCREASE the pageNum state by 1/click and fetches the data for that pg
   const handleNextBtnClick = () => {
     setPageNum(pageNum + 1)
     setFetchedError(false)
-    fetchRepoData(repoName, lang, sort, pageNum)
-      .then(response => {
-       setStatusCode(response.status)
-        return response.json()
-      })
-      .then(data => {
-        const repoDetails = cleanUpApiData(data.items)
-        dispatch(storeRepoDetails(repoDetails))
-      })
-      .catch(() =>setFetchedError(true))
   }
 //this function will DECREASE the pageNum state by 1/click and fetches the data for that pg
   const handlePreviousBtnClick = () => {
     setPageNum(pageNum - 1)
     setFetchedError(false)
-    fetchRepoData(repoName, lang, sort, pageNum)
-      .then(response => {
-       setStatusCode(response.status)
-        return response.json()
-      })
-      .then(data => {
-        const repoDetails = cleanUpApiData(data.items)
-        dispatch(storeRepoDetails(repoDetails))
-      })
-      .catch(() =>setFetchedError(true))
   }
+
+  useEffect(() => {
+    fetchRepoData(repoName, lang, sort, pageNum)
+    .then(response => {
+     setStatusCode(response.status)
+      return response.json()
+    })
+    .then(data => {
+      const repoDetails = cleanUpApiData(data.items)
+      dispatch(storeRepoDetails(repoDetails))
+    })
+    .catch(() =>setFetchedError(true))
+
+  }, [pageNum])
+
   
   return (
     <section className='Pagination'>
