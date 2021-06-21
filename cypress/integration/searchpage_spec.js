@@ -2,6 +2,46 @@ describe('Search page', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000')
   })
+
+  it.only('should be able to see all the content in search page', () => {
+    cy.get('.SearchPage')
+      .find('header').should('have.text', 'RepoCr👀po')
+      .get('form')
+      .find('input[name="repoName"]').should('have.value', '')
+      .type('reactionary')
+      .get('select').eq(0).should('have.value', null)
+      .select('javascript')
+      .get('select').eq(1).should('have.value', null)
+      .select('Yes')
+      .get('.search-msg')
+      .should('have.text', 'Please start by searching a repository')
+      .get('.card').should('not.exist')
+      .get('.previous').should('not.exist')
+      .get('.next').should('not.exist')
+      .get('.page-num').should('not.exist')
+      // intercept fetch call and give reactionary repo dummy data page 1
+      .interceptReactionary()
+      .get('button[value="Submit"]').should('have.text', 'Submit').click()
+      .get('.page-num').should('exist').should('have.text', '  Page Num:  1')
+      .get('.search-msg').should('not.exist')
+      .get('.previous').should('not.exist')
+      .get('.next').should('exist')
+      .get('.card').should('exist').should('have.length', 30)
+      // intercept fetch call and give reactionary repo dummy data page 2
+      .interceptReactionary2()
+      .get('.next').click()
+      .get('.previous').should('exist')
+      .get('.page-num').should('exist').should('have.text', '  Page Num:  2')
+      .get('.next').should('not.exist')
+      //test to see if both the previous and next button updates the DOM or not
+      .get('.previous').click()
+      .get('.search-msg').should('not.exist')
+      .get('.previous').should('not.exist')
+      .get('.next').should('exist')
+      .get('.card').should('exist').should('have.length', 30)
+      .get('.page-num').should('exist').should('have.text', '  Page Num:  1')
+  })
+
   it('should be a controlled form', () => {
     cy.get('input[name="repoName"]').type('reactionary')
       .should('have.value', 'reactionary')
