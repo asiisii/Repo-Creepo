@@ -13,8 +13,8 @@ const Pagination = ({repoName, lang, sort, setStatusCode, setFetchedError}) => {
   const repoData = useSelector(store => store.repoData)
   //this function will INCREASE the pageNum state by 1/click and fetches the data for that pg
   const handleNextBtnClick = () => {
-    setPageNum(pageNum + 1)
-   setFetchedError(false)
+    setPageNum(pageNum = pageNum + 1)
+    setFetchedError(false)
     fetchRepoData(repoName, lang, sort, pageNum)
       .then(response => {
        setStatusCode(response.status)
@@ -28,7 +28,7 @@ const Pagination = ({repoName, lang, sort, setStatusCode, setFetchedError}) => {
   }
 //this function will DECREASE the pageNum state by 1/click and fetches the data for that pg
   const handlePreviousBtnClick = () => {
-    setPageNum(pageNum - 1)
+    setPageNum(pageNum = pageNum - 1)
     setFetchedError(false)
     fetchRepoData(repoName, lang, sort, pageNum)
       .then(response => {
