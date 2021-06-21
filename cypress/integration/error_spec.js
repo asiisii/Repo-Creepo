@@ -61,13 +61,13 @@ describe('Error', () => {
       .contains('Sorry we couldn\'t find the repository you\'re looking for')
   })
 
-  it.only('should display error message when user tries to submit empty inputs', () => {
+  it('should display error message when user tries to submit empty inputs', () => {
     cy.visit('http://localhost:3000')
       .get('button[value="Submit"]').click()
       .get('input[name="repoName"]:invalid')
       .invoke('prop', 'validationMessage')
       .should('equal', 'Please fill out this field.')
-      .get('input[name="repoName"]').type('repo-creeop')
+      .get('input[name="repoName"]').type('repo-creepo')
       .get('button[value="Submit"]').click()
       .get('.option-err')
       .contains('Please fill out all the form')
@@ -75,5 +75,13 @@ describe('Error', () => {
       .get('button[value="Submit"]').click()
       .get('.option-err')
       .contains('Please fill out all the form')
+      .get('select').eq(1).select('Yes')
+      // intercept fetch call and give dummy data
+      .interceptRepoCreepoCard()
+      .get('button[value="Submit"]').click()
+      // checks to see if search-msg is still visible or not
+      .get('.search-msg').should('not.exist')
+      // checks to see if option-err is still visible or not
+      .get('.option-err').should('not.exist')
   })
 })
