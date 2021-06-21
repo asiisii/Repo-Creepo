@@ -50,4 +50,14 @@ describe('Error', () => {
       .get('.error-msg')
       .contains('Oops! Request failed. Please try again.')
   })
+
+  it.only('should display error message when invalid repository is submitted', () => {
+    cy.visit('http://localhost:3000')
+      .get('input[name="repoName"]').type('repo-creeop')
+      .get('select').eq(0).select('javascript')
+      .get('select').eq(1).select('Yes')
+      .get('button[value="Submit"]').click()
+      .get('.option-err')
+      .contains('Sorry we couldn\'t find the repository you\'re looking for')
+  })
 })
